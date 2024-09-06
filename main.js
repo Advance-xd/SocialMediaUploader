@@ -49,7 +49,7 @@ rl.on('close', () => {
 
 function runScript(script, args){
     // Run the child script
-    exec("node " + script + " " + args, (error, stdout, stderr) => {
+    let child = exec("node " + script + " " + args, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing script: ${error.message}`);
             return;
@@ -59,8 +59,43 @@ function runScript(script, args){
             console.error(`Script error: ${stderr}`);
             return;
         }
+    });
 
-        console.log(`Child output: ${stdout}`);
+    child.stdout.on('data', function(data) {
+        console.log(data.toString()); 
     });
 
 }
+
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const fs = require('fs');
+const axios = require('axios');
+const cheerio = require('cheerio');
+
+puppeteer.use(StealthPlugin());
+
+let browser; // Declare the browser variable
+
+// Export the variable so other modules can access it
+module.exports = {
+    
+    getBrowser: () => {
+        console.log(browser);
+        return browser;
+    },
+    setBrowser: (value) => {
+        browser = value;
+        console.log(browser)
+    }
+};
+
+async function main() {
+    browser = await puppeteer.launch({ headless: false, channel: "chrome" });
+    let page = await browser.newPage();
+    console.log(__dirname + "/index.html")
+    await page.goto("file:///" + __dirname + "/index.html")
+    console.log("done")
+}
+
+main();
