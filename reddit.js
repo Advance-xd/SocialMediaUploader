@@ -36,49 +36,73 @@ async function getvideoURL(url) {
 }
 
 const ffmpeg = require('fluent-ffmpeg');
+const backgroundVideo = false
 
 async function downloadM3U8(m3u8Url, outputPath, id) {
-    return new Promise((resolve, reject) => {
-        const musicPath = "./backmusic2.mp3"
-        const backvideo = "./backvideo.mp4"
-        console.log("Video URL:", m3u8Url);
-        console.log("Output Path:", outputPath);
-        console.log("Music Path:", musicPath);
+    if (backgroundVideo){
+        return new Promise((resolve, reject) => {
+            const musicPath = "./backmusic2.mp3"
+            const backvideo = "./backvideo.mp4"
+            console.log("Video URL:", m3u8Url);
+            console.log("Output Path:", outputPath);
+            console.log("Music Path:", musicPath);
+    
+            const command = ffmpeg(m3u8Url)
+                .input(backvideo) // Input the background video
+                .input(musicPath) // Input the background music
+                .outputOptions('-c:v libx264') // Use libx264 for video encoding
+                .outputOptions('-c:a aac') // Use AAC codec for audio
+                .outputOptions('-filter_complex', 
+                    // Scale the background video to 1080x1920
+                    '[1:v]scale=1080:1920,format=yuva420p[bg];' +
+                    // Scale the main video to its original size
+                    '[0:v]scale=1.5*iw:1.5*ih, format=yuva420p[main];' +
+                    // Overlay the main video centered on the background video
+                    '[bg][main]overlay=(W-w)/2:(H-h)/2[outv];' +
+                    // Adjust volume of the background music to 60%
+                    '[2:a]volume=0.4[a1];' +
+                    // Combine the main video's audio with the adjusted background music
+                    '[0:a][a1]amerge=inputs=2[a]'
+                )
+                .outputOptions('-map', '[outv]') // Map the final video stream
+                .outputOptions('-map', '[a]') // Map the final audio stream
+                .outputOptions('-shortest') // Ensure the output duration matches the shortest input
+                .on('end', () => {
+                    console.log(`Downloaded and saved to ${outputPath}`);
+                    resolve();
+                })
+                .on('error', (err) => {
+                    console.error('Error: ', err.message);
+                    reject(err);
+                })
+                .output(outputPath);
+            
+            command.run();
+        });
+    } else {
+        return new Promise((resolve, reject) => {
+            console.log(m3u8Url + " " + outputPath)
+            ffmpeg(m3u8Url)
+                .outputOptions('-c copy') // Copy codec to avoid re-encoding
+                .on('end', () => {
+                    console.log(`Downloaded and saved to ${outputPath}`);
+                    //if (id == videos - 1){
+                    //    uploadVideo(0)
+                    //}
+                    resolve();
+                })
+                .on('error', (err) => {
+                    console.error('Error: ', err.message);
+                    reject(err);
+                })
+                .output(outputPath)
+                .run();
+        });
+    }
+    
 
-        const command = ffmpeg(m3u8Url)
-            .input(backvideo) // Input the background video
-            .input(musicPath) // Input the background music
-            .outputOptions('-c:v libx264') // Use libx264 for video encoding
-            .outputOptions('-c:a aac') // Use AAC codec for audio
-            .outputOptions('-filter_complex', 
-                // Scale the background video to 1080x1920
-                '[1:v]scale=1080:1920,format=yuva420p[bg];' +
-                // Scale the main video to its original size
-                '[0:v]scale=1.5*iw:1.5*ih, format=yuva420p[main];' +
-                // Overlay the main video centered on the background video
-                '[bg][main]overlay=(W-w)/2:(H-h)/2[outv];' +
-                // Adjust volume of the background music to 60%
-                '[2:a]volume=0.4[a1];' +
-                // Combine the main video's audio with the adjusted background music
-                '[0:a][a1]amerge=inputs=2[a]'
-            )
-            .outputOptions('-map', '[outv]') // Map the final video stream
-            .outputOptions('-map', '[a]') // Map the final audio stream
-            .outputOptions('-shortest') // Ensure the output duration matches the shortest input
-            .on('end', () => {
-                console.log(`Downloaded and saved to ${outputPath}`);
-                resolve();
-            })
-            .on('error', (err) => {
-                console.error('Error: ', err.message);
-                reject(err);
-            })
-            .output(outputPath);
-        
-        command.run();
-    });
+    
 }
-
 
 
 let topVideoPosts = []
@@ -95,10 +119,12 @@ const blacklist = [
 
 // Fetch the top 7 posts from the r/WarthunderMemes subreddit
 async function getTopRedditPosts(reddit) {
-    const response = await fetch('https://www.reddit.com/r/'+reddit+'/top/.json?limit='+fetchlimit+'&t=week');
-    const data = await response.json();
+    const response = await axios.get('https://www.reddit.com/r/'+reddit+'/top/.json?limit='+fetchlimit+'&t=week');
+    console.log(response.status)
+    console.log(response.data.data.childern)
+
     
-    const posts = data.data.children;
+    const posts = response.data.data.children;
     
     // Filter out non-video posts and get only the videos
     let videoPosts = posts.filter(post => {
