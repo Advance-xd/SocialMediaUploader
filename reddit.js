@@ -9,6 +9,8 @@ async function getRedditVideos(reddit) {
         fs.mkdirSync("./reddit");
     }
     const topPosts = await getTopRedditPosts(reddit)
+    fs.writeFileSync("./reddit/videosdata.json", JSON.stringify(topPosts, null, 4));
+
     for (let i = 0; i < topPosts.length; i++){
         let videoUrl = await getvideoURL(topPosts[i].data.url)
         //console.log(videoUrl)
@@ -16,6 +18,8 @@ async function getRedditVideos(reddit) {
         await downloadM3U8(videoUrl, "./reddit/video_" + i + ".mp4", i)
     }
 }
+
+
 
 async function getvideoURL(url) {
     try {
@@ -114,7 +118,8 @@ const maxvideolength = 16
 const minvideolength = 5
 
 const blacklist = [
-    "https://v.redd.it/k7704o4lllkd1"
+    "https://v.redd.it/k7704o4lllkd1",
+    "https://v.redd.it/nn51qct4b9nd1"
 ]
 
 // Fetch the top 7 posts from the r/WarthunderMemes subreddit
