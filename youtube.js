@@ -22,10 +22,12 @@ const commands = {
 
 async function login(account) {
     console.log("youtube login: " + account["email"])
-    browser = await puppeteer.launch({ headless: false, channel: "chrome"/*, userDataDir: "userDataDir/"*/ });
+    browser = await puppeteer.launch({ headless: false, channel: "chrome", userDataDir: "./userDataDir/"});
     page = await browser.newPage();
+    //page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.5938.132 Safari/537.36')
     console.log("broswer", browser)
     page.setDefaultTimeout(5000);
+    
 
     const cookiesFileExists = fs.existsSync("./" +account.email + "/youtube.json") && fs.statSync("./" +account.email + "/youtube.json").size > 0;
     
@@ -60,6 +62,7 @@ async function login(account) {
             console.log("log in")
         }
     }
+    
     await page.goto("https://www.youtube.com/upload")
 
 
@@ -72,7 +75,7 @@ async function login(account) {
     const cookies = await page.cookies();
 
     // Save cookies to a file
-    //fs.writeFileSync("./" +account.email + "/youtube.json", JSON.stringify(cookies, null, 4));
+    fs.writeFileSync("./" +account.email + "/youtube.json", JSON.stringify(cookies, null, 4));
 
     
 }
@@ -198,10 +201,10 @@ async function loadaccounts() {
         commands[args[0]](accounts[args[1]]);
     }
     */
-    console.log(accounts["PerfectlyCutScreams"]["youtube"])
+    console.log(accounts)
     await loadreddit();
     await login(accounts["PerfectlyCutScreams"]["youtube"])
-    await upload(0)
+    //await upload(0)
 }
 
 loadaccounts()
