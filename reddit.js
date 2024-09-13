@@ -15,7 +15,7 @@ async function getRedditVideos(reddit) {
         let videoUrl = await getvideoURL(topPosts[i].data.url)
         //console.log(videoUrl)
         
-        await downloadM3U8(videoUrl, "./reddit/video_" + i + ".mp4", topPosts[i].data.media.reddit_video.has_audio)
+        await downloadM3U8(videoUrl, "./reddit/video_" + i + ".mp4", topPosts[i].data.media.reddit_video.has_audio, topPosts[i].data.media.reddit_video.duration)
     }
 }
 
@@ -42,7 +42,7 @@ async function getvideoURL(url) {
 const ffmpeg = require('fluent-ffmpeg');
 const backgroundVideo = true
 
-async function downloadM3U8(m3u8Url, outputPath, audio) {
+async function downloadM3U8(m3u8Url, outputPath, audio, length) {
     if (backgroundVideo){
         return new Promise((resolve, reject) => {
             const musicPath = "./backmusic2.mp3"
@@ -103,6 +103,8 @@ async function downloadM3U8(m3u8Url, outputPath, audio) {
                 .outputOptions('-map', '[outv]') // Map the final video stream
                 .outputOptions('-map', '[a]') // Map the adjusted background music audio stream
                 .outputOptions('-shortest') // Ensure the output duration matches the shortest input
+                .outputOptions('-t', length) // Set the video duration to 30 seconds
+
                 .on('end', () => {
                     console.log(`Downloaded and saved to ${outputPath}`);
                     resolve();
