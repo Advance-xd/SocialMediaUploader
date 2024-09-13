@@ -82,7 +82,7 @@ async function login(account) {
 
 async function upload(id) {
 
-    const date = await getDayAfterXDays(await getFormattedDate(), id)
+    const date = await getDayAfterXDays(await getFormattedDate(), id + 1)
 
     const fileInputSelector = 'input[type="file"]';
     await page.waitForSelector(fileInputSelector);
@@ -123,35 +123,56 @@ async function upload(id) {
 
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 14; i++) {
         await page.keyboard.press('Backspace');
     }
 
+
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     console.log(date)
+
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    /*
     for (let i = 0; i < date.length; i++){
         await page.keyboard.press(date[i])
-        console.log(date[i])
     }
+    */
+    await page.waitForSelector('tp-yt-paper-input[aria-label="Ange datum"]', date)
+
+    await page.type('tp-yt-paper-input[aria-label="Ange datum"]', date)
+    
+    //await page.type('input[aria-labelledby="paper-input-label-12"]',date)
+
+    //await page.click('input[id="paper-input-label-8"]')
+
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     console.log("ENTER")
     await page.keyboard.press("Enter")
 
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    //await page.click('div[class"guidelines-section style-scope ytcp-uploads-review"]')
+
 
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     await page.click('button[aria-label="Schemalägg"]')
 
     await new Promise(resolve => setTimeout(resolve, 5000));
     await page.goto("https://www.youtube.com/upload")
-    if (id != 6){
+    if (id != 5){
         upload(id+1)
 
     }
-
+    
     
 }
 
 async function getFormattedDate() {
-    return "2024-09-09"
     const today = new Date();
 
     
@@ -203,8 +224,8 @@ async function loadaccounts() {
     */
     console.log(accounts)
     await loadreddit();
-    await login(accounts["PerfectlyCutScreams"]["youtube"])
-    //await upload(0)
+    await login(accounts["Unexpected"]["youtube"])
+    await upload(0)
 }
 
 loadaccounts()
