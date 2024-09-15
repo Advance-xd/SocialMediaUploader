@@ -16,7 +16,10 @@ const oauth2Client = new google.auth.OAuth2(
 // Generate an authentication URL
 const authUrl = oauth2Client.generateAuthUrl({
   access_type: 'online',
-  scope: ['https://www.googleapis.com/auth/youtube.upload']
+  scope: [
+    'https://www.googleapis.com/auth/youtube.upload',
+    'https://www.googleapis.com/auth/youtube.readonly'
+  ]
 });
 
 // Print the authentication URL and prompt the user to visit it
@@ -39,8 +42,8 @@ async function login() {
     console.log("starting login")
     // Create a YouTube Data API client
     youtube = google.youtube({ version: 'v3', auth: oauth2Client });
-    upload(0)
-  
+    //upload(0)
+    getUploadedVideos()
   
     
   
@@ -84,6 +87,46 @@ async function upload(id) {
 
     
 
+}
+
+async function getUploadedVideos() {
+    // Get the authenticated user's channel details
+    const channelResponse = await youtube.channels.list({
+        part: 'contentDetails',
+        mine: true,
+      });
+  
+      // Get the upload playlist ID
+      const uploadsPlaylistId =
+        channelResponse.data.items[0].contentDetails.relatedPlaylists.uploads;
+  
+      // Retrieve the list of uploaded videos, including scheduled ones
+      const videoResponse = await youtube.playlistItems.list({
+        part: 'snippet,contentDetails',
+        playlistId: uploadsPlaylistId,
+        maxResults: 50, // You can adjust the number
+      });
+
+    fs.writeFileSync("./youtubevideosdata.json", JSON.stringify(videoResponse, null, 4));
+  
+    console.log('Scheduled/Unlisted/Private Videos:');
+    for (const item of videoResponse.data.items) {
+        const videoId = item.snippet.resourceId.videoId;
+        const videoDetails = await youtube.videos.list({
+          part: 'status,snippet',
+          id: videoId,
+        });
+  
+        const video = videoDetails.data.items[0];
+  
+        // Check if the video is scheduled (i.e., private or scheduled to publish)
+        if (video.status.privacyStatus === 'private' || video.status.privacyStatus === 'unlisted') {
+          console.log(`Title: ${video.snippet.title}`);
+          console.log(`Video ID: ${videoId}`);
+          console.log(`Privacy Status: ${video.status.privacyStatus}`);
+          console.log('---');
+        }
+    }
 }
 
 async function getFormattedDate() {
@@ -156,7 +199,7 @@ const port = 80;
 app.get('/', (req, res) => {  
 
     res.sendFile('index.html' , { root : "./"});
-
+    
       //loading = true
       console.log("get /")
       console.log(req.query.code)
