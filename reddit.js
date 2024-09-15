@@ -40,7 +40,7 @@ async function getvideoURL(url) {
 }
 
 const ffmpeg = require('fluent-ffmpeg');
-const backgroundVideo = true
+const backgroundVideo = false
 
 async function downloadM3U8(m3u8Url, outputPath, audio, length) {
     if (backgroundVideo){
