@@ -199,9 +199,9 @@ const commands = [
 ]
 
 async function main() {
-    console.log(args[1])
+    console.log(args[0])
     //commands[args[0]]([args[1]]);
-    getRedditVideos(args[1])
+    getRedditVideos(args[0])
     
 }
 

@@ -139,9 +139,9 @@ async function upload(id) {
         await page.keyboard.press(date[i])
     }
     */
-    await page.waitForSelector('tp-yt-paper-input[aria-label="Ange datum"]', date)
+    await page.waitForSelector('tp-yt-paper-input[aria-label="Enter date"]')
 
-    await page.type('tp-yt-paper-input[aria-label="Ange datum"]', date)
+    await page.type('tp-yt-paper-input[aria-label="Enter date"]', date)
     
     //await page.type('input[aria-labelledby="paper-input-label-12"]',date)
 
@@ -224,7 +224,7 @@ async function loadaccounts() {
     */
     console.log(accounts)
     await loadreddit();
-    await login(accounts["Unexpected"]["youtube"])
+    await login(accounts["youtube"][0])
     await upload(0)
 }
 

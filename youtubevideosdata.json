@@ -14,7 +14,7 @@
             "x-goog-api-client": "gdcl/7.2.0 gl-node/22.6.0",
             "Accept-Encoding": "gzip",
             "User-Agent": "google-api-nodejs-client/7.2.0 (gzip)",
-            "Authorization": "Bearer ya29.a0AcM612xuVV7yDFEFt2GJftfS_p5oF_lhsbzAyiKE4hE_QQ3Txhj3iFrJTwqiE3_eUpqmu6tOkKxzufFRJco4SKbGwJ6Eko9Fd-psHOqHD_ugbIc3g7lYhMAhDu8fTAALi7R0oPFxINoJcuw98cHDo5uMOToT8UaDYa5E_gk5aCgYKARISARISFQHGX2Miyp9R3I1ITnrGeNnOcCiDpg0175"
+            "Authorization": "Bearer ya29.a0AcM612zID4eKwQDbAai1acjjTjVzXOZ8I2MGrUAvD2pMxSIy5JKb4KGzZnR-QuaL5s_dYjMwBS_fCDg4EAuU9RpHZ-oa4usqLUYNSuBsTj25rGJ7EYoLYOtv7O-Kwri8WebeFmBf3yCpVngDTTnsdqgwKYBVZvWFsgOgbE2_aCgYKATMSARISFQHGX2MiRh-JiizPryoLfzDEG4H4eg0175"
         },
         "params": {
             "part": "snippet,contentDetails",
@@ -26,41 +26,41 @@
     },
     "data": {
         "kind": "youtube#playlistItemListResponse",
-        "etag": "FQQ_5GM-SfCtz7VRBeH0X5laJQM",
+        "etag": "kSQ9bhixqKgy7Bv27BxoMsU3eL0",
         "nextPageToken": "EAAaC1BUOkNESW9BVkFC",
         "items": [
             {
                 "kind": "youtube#playlistItem",
-                "etag": "1nJmxHGhNjrFCyM6dxq2wrxNU-o",
+                "etag": "MJx2Idii7uvHtM-eHXKGmmPu96c",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLmNYWmxNSmZuZVpz",
                 "snippet": {
-                    "publishedAt": "2024-09-15T11:07:15Z",
+                    "publishedAt": "2024-09-20T12:00:49Z",
                     "channelId": "UCdMdjZyF_iWI9ZRONGABIBQ",
                     "title": "Archery   u/spiceygurlx #shorts",
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/cXZlMJfneZs/default.jpg?sqp=CND_m7cG&rs=AOn4CLCrBrj4qAjAfKRoPI7cG-eEIK3ISw",
+                            "url": "https://i.ytimg.com/vi/cXZlMJfneZs/default.jpg",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/cXZlMJfneZs/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAnA3z1jmGENtFR5yOadOKBjl-ujA",
+                            "url": "https://i.ytimg.com/vi/cXZlMJfneZs/mqdefault.jpg",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/cXZlMJfneZs/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLDtY4QRm5wKMVC4fh0dV-wTGQh_xQ",
+                            "url": "https://i.ytimg.com/vi/cXZlMJfneZs/hqdefault.jpg",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/cXZlMJfneZs/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLAxUHjTRxnSpqeELbASsGLzCrJrbA",
+                            "url": "https://i.ytimg.com/vi/cXZlMJfneZs/sddefault.jpg",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/cXZlMJfneZs/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAvFZJwO_-hZurz5xwVbAxWvOu_Fw",
+                            "url": "https://i.ytimg.com/vi/cXZlMJfneZs/maxresdefault.jpg",
                             "width": 1280,
                             "height": 720
                         }
@@ -77,41 +77,41 @@
                 },
                 "contentDetails": {
                     "videoId": "cXZlMJfneZs",
-                    "videoPublishedAt": "2024-09-15T11:07:15Z"
+                    "videoPublishedAt": "2024-09-20T12:00:49Z"
                 }
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "WGKpGLwtQ0LL5oOihAnyxUNbhtc",
+                "etag": "4NcI3RqebNELsjEJyz2Xe4PV_aE",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLnkycHlBNDlvYzJ3",
                 "snippet": {
-                    "publishedAt": "2024-09-15T11:07:12Z",
+                    "publishedAt": "2024-09-19T12:01:05Z",
                     "channelId": "UCdMdjZyF_iWI9ZRONGABIBQ",
                     "title": "Bro come here  u/thickgallll #shorts",
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/y2pyA49oc2w/default.jpg?sqp=CND_m7cG&rs=AOn4CLA7Jb-Nc_y1OrnmBj-y-R1ZawLViw",
+                            "url": "https://i.ytimg.com/vi/y2pyA49oc2w/default.jpg",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/y2pyA49oc2w/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLA8UPkEWvQLSA9hpGhiuS55KtSjPw",
+                            "url": "https://i.ytimg.com/vi/y2pyA49oc2w/mqdefault.jpg",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/y2pyA49oc2w/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLDYv7HnrklAGO87Agp3Kjf-P0p_Bw",
+                            "url": "https://i.ytimg.com/vi/y2pyA49oc2w/hqdefault.jpg",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/y2pyA49oc2w/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLCt-pI2udhwGU-0TanpA8Z4Ifme7Q",
+                            "url": "https://i.ytimg.com/vi/y2pyA49oc2w/sddefault.jpg",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/y2pyA49oc2w/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLBSUwvkIpFPB3MaEkmbOWoeB2IBkw",
+                            "url": "https://i.ytimg.com/vi/y2pyA49oc2w/maxresdefault.jpg",
                             "width": 1280,
                             "height": 720
                         }
@@ -128,41 +128,41 @@
                 },
                 "contentDetails": {
                     "videoId": "y2pyA49oc2w",
-                    "videoPublishedAt": "2024-09-15T11:07:12Z"
+                    "videoPublishedAt": "2024-09-19T12:01:05Z"
                 }
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "xKNtcT71dbO0J4K5rv79MuqEdOo",
+                "etag": "0snnIYjFHyYtxgUgsDXxtq9SNfM",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLnNpVm83QWRHTklz",
                 "snippet": {
-                    "publishedAt": "2024-09-15T11:07:09Z",
+                    "publishedAt": "2024-09-18T12:01:03Z",
                     "channelId": "UCdMdjZyF_iWI9ZRONGABIBQ",
                     "title": "I have a snake u/preciousbabex #shorts",
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/siVo7AdGNIs/default.jpg?sqp=CND_m7cG&rs=AOn4CLCcQIYUbU6JMPG8BV-kqIJDSB9TvQ",
+                            "url": "https://i.ytimg.com/vi/siVo7AdGNIs/default.jpg",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/siVo7AdGNIs/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLDy47oMUjhKC5qqNB1FI3hzOpx1tQ",
+                            "url": "https://i.ytimg.com/vi/siVo7AdGNIs/mqdefault.jpg",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/siVo7AdGNIs/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLCdVlECFZe0IL-wz0IbZLRL2mXz_A",
+                            "url": "https://i.ytimg.com/vi/siVo7AdGNIs/hqdefault.jpg",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/siVo7AdGNIs/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLAuJ72EGaFDUn9RAjHTMIRBKVgHKw",
+                            "url": "https://i.ytimg.com/vi/siVo7AdGNIs/sddefault.jpg",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/siVo7AdGNIs/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAHHAY6I_9CqO3w9ZGo_zhLp72Sag",
+                            "url": "https://i.ytimg.com/vi/siVo7AdGNIs/maxresdefault.jpg",
                             "width": 1280,
                             "height": 720
                         }
@@ -179,41 +179,41 @@
                 },
                 "contentDetails": {
                     "videoId": "siVo7AdGNIs",
-                    "videoPublishedAt": "2024-09-15T11:07:09Z"
+                    "videoPublishedAt": "2024-09-18T12:01:03Z"
                 }
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "HVqfpcAghY8asCVsOcC_dz_-0aQ",
+                "etag": "AkA-Zflec4jDxEcNNZpUc6wrvHw",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLm9JdENXbVN2a2g0",
                 "snippet": {
-                    "publishedAt": "2024-09-15T11:07:06Z",
+                    "publishedAt": "2024-09-17T12:00:52Z",
                     "channelId": "UCdMdjZyF_iWI9ZRONGABIBQ",
                     "title": "Learning how to do a handstand u/WoozyTraveller #shorts",
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/oItCWmSvkh4/default.jpg?sqp=CND_m7cG&rs=AOn4CLBg0MPPxDjoHjbJfYS8KmiUVuN5CA",
+                            "url": "https://i.ytimg.com/vi/oItCWmSvkh4/default.jpg",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/oItCWmSvkh4/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAkXvGsiLsd166eyiyQngFwA33K8A",
+                            "url": "https://i.ytimg.com/vi/oItCWmSvkh4/mqdefault.jpg",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/oItCWmSvkh4/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLD9ZckrwuO6WDNKK7kJMDkJkgwtiA",
+                            "url": "https://i.ytimg.com/vi/oItCWmSvkh4/hqdefault.jpg",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/oItCWmSvkh4/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLCVE-PVYuuye1-2nxKQFae9n_DkMQ",
+                            "url": "https://i.ytimg.com/vi/oItCWmSvkh4/sddefault.jpg",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/oItCWmSvkh4/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLCup7mU2C9VTnSyp9UV6T487LJjTQ",
+                            "url": "https://i.ytimg.com/vi/oItCWmSvkh4/maxresdefault.jpg",
                             "width": 1280,
                             "height": 720
                         }
@@ -230,41 +230,41 @@
                 },
                 "contentDetails": {
                     "videoId": "oItCWmSvkh4",
-                    "videoPublishedAt": "2024-09-15T11:07:06Z"
+                    "videoPublishedAt": "2024-09-17T12:00:52Z"
                 }
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "Cliah5lSs8bdRswH7xpqUy-tdGM",
+                "etag": "gzV3CmWfZYZLWR7xsem86iq53-U",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLmZ3eTN3U3hYQ2lr",
                 "snippet": {
-                    "publishedAt": "2024-09-15T11:07:03Z",
+                    "publishedAt": "2024-09-16T12:00:44Z",
                     "channelId": "UCdMdjZyF_iWI9ZRONGABIBQ",
                     "title": "Black queens are in shock  u/VenexMorningstar #shorts",
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/fwy3wSxXCik/default.jpg?sqp=CND_m7cG&rs=AOn4CLDjTohUR7tz5nbY7MeGP-i3MuUm3w",
+                            "url": "https://i.ytimg.com/vi/fwy3wSxXCik/default.jpg",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/fwy3wSxXCik/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLC3s7GDd6vtG0owJ9DxNQhzkVWY5A",
+                            "url": "https://i.ytimg.com/vi/fwy3wSxXCik/mqdefault.jpg",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/fwy3wSxXCik/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLD_BQDgjEIRL6TIRJnhHdFRT3YmeA",
+                            "url": "https://i.ytimg.com/vi/fwy3wSxXCik/hqdefault.jpg",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/fwy3wSxXCik/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLC8wQIa1cLXScCPGlHW_QxluMr4QQ",
+                            "url": "https://i.ytimg.com/vi/fwy3wSxXCik/sddefault.jpg",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/fwy3wSxXCik/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLDCX1Tkzyb1FHwNaBRO1a3bXtrpWQ",
+                            "url": "https://i.ytimg.com/vi/fwy3wSxXCik/maxresdefault.jpg",
                             "width": 1280,
                             "height": 720
                         }
@@ -281,7 +281,7 @@
                 },
                 "contentDetails": {
                     "videoId": "fwy3wSxXCik",
-                    "videoPublishedAt": "2024-09-15T11:07:03Z"
+                    "videoPublishedAt": "2024-09-16T12:00:44Z"
                 }
             },
             {
@@ -745,7 +745,7 @@
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "QYOroIhXqN38Cd_ozoEaL81pFzQ",
+                "etag": "AZ-eej2mIabpeNoZ7WYcn9QX7-A",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLlZpWmpCT3h4aWQ4",
                 "snippet": {
                     "publishedAt": "2024-09-03T22:00:38Z",
@@ -1204,7 +1204,7 @@
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "9in4349SYPOm63FEqGRwU6TYgXE",
+                "etag": "0ZeGJyZuJHn1byN--Wf-TaTJXh0",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLmtFQ3R2aFJRTTdn",
                 "snippet": {
                     "publishedAt": "2023-09-29T15:36:13Z",
@@ -1213,27 +1213,27 @@
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/default.jpg?sqp=CND_m7cG&rs=AOn4CLDzF67yjYBXt3B_1brhTn7QCE4GRQ",
+                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/default.jpg?sqp=CPCbtrcG&rs=AOn4CLBlGFf0-DgY40bWt-0YNKPlRsO3YA",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAx-xrxain-jerane65GeQmD0MfSQ",
+                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/mqdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLDXO_jCUmUQc6h_PNzb5J_Y67Tj7Q",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLBJnIafbG-_CgMk2P8lp-LO2vj4yg",
+                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/hqdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLC9BD1b4ThJ6QujB95YPBf6hWRtag",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLA2pNGBLodMJNIfCrzwb5PLpi0PbQ",
+                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/sddefault.jpg?sqp=CPCbtrcG&rs=AOn4CLChSTM_k9KqhsWe5DcQh1Ay5Xsbww",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLD0LEpXe_jqgXDbw0XBeP1kNzPlRw",
+                            "url": "https://i9.ytimg.com/vi/kECtvhRQM7g/maxresdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLCjT4sqNs_BPZZzdtplqhKnDWkUSw",
                             "width": 1280,
                             "height": 720
                         }
@@ -1255,7 +1255,7 @@
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "vZ47O4x8Qhk9tA3P_q6tih5YA3g",
+                "etag": "YtZ1U1mF_lC9YViLecQJwtPfLdo",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLlJSbFlyY2xUMHhF",
                 "snippet": {
                     "publishedAt": "2023-09-29T15:35:01Z",
@@ -1264,27 +1264,27 @@
                     "description": "",
                     "thumbnails": {
                         "default": {
-                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/default.jpg?sqp=CND_m7cG&rs=AOn4CLAWl1O2vfV-ueTTJy4GL3C4OLH7mQ",
+                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/default.jpg?sqp=CPCbtrcG&rs=AOn4CLDyw4Q3erUJSCu1Zm0rS95hdpiVfw",
                             "width": 120,
                             "height": 90
                         },
                         "medium": {
-                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/mqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAOmhDKUxp-L_QBHvywcl47_BN0Ug",
+                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/mqdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLCv8GmbajENG5BJ7H_1-L2UKaD0MA",
                             "width": 320,
                             "height": 180
                         },
                         "high": {
-                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/hqdefault.jpg?sqp=CND_m7cG&rs=AOn4CLApxrQOXvlJ2HjRzqr4Cu0EvFEalw",
+                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/hqdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLD_5ZwO-36LbUbmhzej853BKp0gvw",
                             "width": 480,
                             "height": 360
                         },
                         "standard": {
-                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/sddefault.jpg?sqp=CND_m7cG&rs=AOn4CLDeqA0UemJTYqie71F_MH8Bsp6Vqw",
+                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/sddefault.jpg?sqp=CPCbtrcG&rs=AOn4CLCKN8rVGS8gFb1YqhlxfQKBN1EriA",
                             "width": 640,
                             "height": 480
                         },
                         "maxres": {
-                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/maxresdefault.jpg?sqp=CND_m7cG&rs=AOn4CLAN6RbujiXpP599ElLnWc2Yr6Acwg",
+                            "url": "https://i9.ytimg.com/vi/RRlYrclT0xE/maxresdefault.jpg?sqp=CPCbtrcG&rs=AOn4CLA1uUGxGHBHGm-zBlPR0dYK1MsE3g",
                             "width": 1280,
                             "height": 720
                         }
@@ -2224,7 +2224,7 @@
             },
             {
                 "kind": "youtube#playlistItem",
-                "etag": "tZaXhDBbPaUrm6tD4WtidZqT6ac",
+                "etag": "v4TjrFLK_I8UJOiGM33LNlHMzBM",
                 "id": "VVVkTWRqWnlGX2lXSTlaUk9OR0FCSUJRLkkxMXdHcGZkcGNR",
                 "snippet": {
                     "publishedAt": "2023-07-03T22:00:13Z",
@@ -2590,7 +2590,7 @@
         "cache-control": "private",
         "content-encoding": "gzip",
         "content-type": "application/json; charset=UTF-8",
-        "date": "Sun, 15 Sep 2024 15:42:32 GMT",
+        "date": "Fri, 20 Sep 2024 15:03:16 GMT",
         "server": "scaffolding on HTTPServer2",
         "transfer-encoding": "chunked",
         "vary": "Origin, X-Origin, Referer",

@@ -42,8 +42,8 @@ async function login() {
     console.log("starting login")
     // Create a YouTube Data API client
     youtube = google.youtube({ version: 'v3', auth: oauth2Client });
-    //upload(0)
-    getUploadedVideos()
+    upload(0)
+    //getUploadedVideos()
   
     
   
@@ -53,11 +53,20 @@ async function upload(id) {
     console.log("upload video",id)
     const date = await getDayAfterXDays(await getFormattedDate(), id + 1)
     console.log(date)
+    let title 
+    if (redditvideos[id].data.media.reddit_video.height > redditvideos[id].data.media.reddit_video.width){
+        console.log("shorts")
+        title = redditvideos[id].data.title + " u/" + redditvideos[id].data.author + " #shorts"
+    } else {
+        console.log("normal video")
+        title = redditvideos[id].data.title + " u/" + redditvideos[id].data.author
+
+    }
     youtube.videos.insert({
         part: 'snippet,status',
         requestBody: {
           snippet: {
-            title: redditvideos[id].data.title + " u/" + redditvideos[id].data.author + " #shorts",
+            title: title,
             description: '',
             tags: [], // optional
             categoryId: '', // optional, use '22' for "People & Blogs"
@@ -76,7 +85,9 @@ async function upload(id) {
           console.error('Error uploading video: ' + err);
           return;
         }
-    
+
+
+        //addDataToList(res.data)
         console.log(`Video uploaded successfully: https://www.youtube.com/watch?v=${res.data.id}`);
 
         if (id != redditvideos.length-1){
@@ -127,6 +138,43 @@ async function getUploadedVideos() {
           console.log('---');
         }
     }
+}
+
+async function addDataToList(newData) {
+    // Read the current content of the file
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading file:', err);
+        return;
+      }
+  
+      let jsonData;
+      
+      // Parse JSON if file has content, otherwise create an empty object
+      try {
+        jsonData = data ? JSON.parse(data) : {};
+      } catch (parseErr) {
+        console.error('Error parsing JSON:', parseErr);
+        return;
+      }
+  
+      // If "list" does not exist in JSON, create it as an array
+      if (!Array.isArray(jsonData)) {
+        jsonData = [];
+      }
+  
+      // Add the new data to the "list"
+      jsonData.push(newData);
+  
+      // Write the updated content back to the file
+      fs.writeFile(path, JSON.stringify(jsonData, null, 4), (writeErr) => {
+        if (writeErr) {
+          console.error('Error writing to file:', writeErr);
+        } else {
+          console.log('Data successfully added to list!');
+        }
+      });
+    });
 }
 
 async function getFormattedDate() {
@@ -198,7 +246,7 @@ const port = 80;
 
 app.get('/', (req, res) => {  
 
-    res.sendFile('index.html' , { root : "./"});
+    res.sendFile('youtubeweb.html' , { root : "./"});
     
       //loading = true
       console.log("get /")
@@ -212,7 +260,10 @@ app.get('/', (req, res) => {
       //uploadVideo("F:/Code/calmmind/output.mp4", title, description, privacyStatus);
       
       
-  
+})
+
+app.get('/data', (req, res) => {
+    res.send(redditvideos);
 })
 
 server.listen(port, () => {
