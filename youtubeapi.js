@@ -15,7 +15,7 @@ const oauth2Client = new google.auth.OAuth2(
 //console.log(credentials.redirect_uris)
 // Generate an authentication URL
 const authUrl = oauth2Client.generateAuthUrl({
-  access_type: 'online',
+  access_type: 'offline',
   scope: [
     'https://www.googleapis.com/auth/youtube.upload',
     'https://www.googleapis.com/auth/youtube.readonly'
@@ -31,6 +31,25 @@ let access_token = null
 let refresh_token = null
 let youtube = null
 
+async function refreshAccessToken() {
+    const oAuth2Client = new google.auth.OAuth2(credentials.installed.client_id, credentials.installed.client_secret, credentials.installed.redirect_uris);
+    // Set the refresh token to the client
+    oAuth2Client.setCredentials({
+        refresh_token: refresh_token,
+    });
+
+    try {
+        // Refresh the access token
+        const { credentials } = await oAuth2Client.refreshAccessToken();
+        access_token = credentials.access_token;
+
+        console.log('New access token:', access_token);
+
+        // Optionally, save the new token to a file/database or update your environment variables
+    } catch (error) {
+        console.error('Error refreshing access token:', error);
+    }
+}
 
 let authCode = ''; // Replace with the authorization code obtained from the user
 
@@ -38,16 +57,27 @@ async function login() {
     response = await oauth2Client.getToken(authCode);
     access_token = response.tokens.access_token;
     refresh_token  = response.tokens.refresh_token;
+    console.log("access_token", access_token)
+
+    console.log("Refresh_token", refresh_token)
+
     oauth2Client.setCredentials({ access_token, refresh_token });
     console.log("starting login")
     // Create a YouTube Data API client
     youtube = google.youtube({ version: 'v3', auth: oauth2Client });
-    upload(0)
+
+    //refreshAccessToken();
+
+    //upload(0)
     //getUploadedVideos()
   
     
   
 }
+
+setInterval(() => {
+    refreshAccessToken();
+}, 1000*60*30);
 
 async function upload(id) {
     console.log("upload video",id)
@@ -62,39 +92,49 @@ async function upload(id) {
         title = redditvideos[id].data.title + " u/" + redditvideos[id].data.author
 
     }
-    youtube.videos.insert({
-        part: 'snippet,status',
-        requestBody: {
-          snippet: {
-            title: title,
-            description: '',
-            tags: [], // optional
-            categoryId: '', // optional, use '22' for "People & Blogs"
-          },
-          status: {
-            privacyStatus: 'private', // Set to private initially
-            publishAt: date + 'T12:00:00Z', // Schedule the video (UTC format)
-            selfDeclaredMadeForKids: false, // Set to true if the video is for kids
-          }
-        },
-        media: {
-          body: fs.createReadStream('./reddit/video_'+id+'.mp4') // Path to the video file
-        }
-      }, (err, res) => {
-        if (err) {
-          console.error('Error uploading video: ' + err);
-          return;
-        }
-
-
-        //addDataToList(res.data)
-        console.log(`Video uploaded successfully: https://www.youtube.com/watch?v=${res.data.id}`);
-
-        if (id != redditvideos.length-1){
-            upload(id+1)
+    try {
+        youtube.videos.insert({
+            part: 'snippet,status',
+            requestBody: {
+              snippet: {
+                title: title,
+                description: '',
+                tags: [], // optional
+                categoryId: '', // optional, use '22' for "People & Blogs"
+              },
+              status: {
+                privacyStatus: 'private', // Set to private initially
+                publishAt: date + 'T12:00:00Z', // Schedule the video (UTC format)
+                selfDeclaredMadeForKids: false, // Set to true if the video is for kids
+              }
+            },
+            media: {
+              body: fs.createReadStream('./reddit/video_'+id+'.mp4') // Path to the video file
+            }
+          }, (err, res) => {
+            if (err) throw err;
     
+            //addDataToList(res.data)
+            console.log(`Video uploaded successfully: https://www.youtube.com/watch?v=${res.data.id}`);
+    
+            if (id != redditvideos.length-1){
+                upload(id+1)
+        
+            }
+        });
+    } catch (error){
+        console.error('Error uploading video: ' + err);
+        if (error.code === 401 || error.response.data.error === 'invalid_token') {
+            console.log('Access token expired, refreshing token...');
+            // Refresh the token and retry the upload
+            await oauth2Client.refreshAccessToken();
+            // Retry upload after refreshing the token
+            await uploadVideo();
+        } else {
+            console.error('Error uploading video:', error);
         }
-    });
+    }
+    
 
     
 
@@ -255,6 +295,7 @@ app.get('/', (req, res) => {
         authCode = req.query.code
         console.log("Got auth code " + authCode)
         login()
+
       }
       
       //uploadVideo("F:/Code/calmmind/output.mp4", title, description, privacyStatus);
