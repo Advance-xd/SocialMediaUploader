@@ -4,7 +4,7 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-async function getRedditVideos(reddit) {
+async function getRedditVideos(reddit, background) {
     if (!fs.existsSync("./reddit")) {
         fs.mkdirSync("./reddit");
     }
@@ -15,7 +15,7 @@ async function getRedditVideos(reddit) {
         let videoUrl = await getvideoURL(topPosts[i].data.url)
         //console.log(videoUrl)
         
-        await downloadM3U8(videoUrl, "./reddit/video_" + i + ".mp4", topPosts[i].data.media.reddit_video.has_audio, topPosts[i].data.media.reddit_video.duration)
+        await downloadM3U8(videoUrl, "./reddit/video_" + i + ".mp4", topPosts[i].data.media.reddit_video.has_audio, topPosts[i].data.media.reddit_video.duration, background)
     }
 }
 
@@ -40,10 +40,9 @@ async function getvideoURL(url) {
 }
 
 const ffmpeg = require('fluent-ffmpeg');
-const backgroundVideo = false
 
-async function downloadM3U8(m3u8Url, outputPath, audio, length) {
-    if (backgroundVideo){
+async function downloadM3U8(m3u8Url, outputPath, audio, length, background) {
+    if (background){
         return new Promise((resolve, reject) => {
             const musicPath = "./backmusic2.mp3"
             const backvideo = "./backvideo.mp4"
@@ -155,10 +154,7 @@ const videos = 7
 const maxvideolength = 16
 const minvideolength = 5
 
-const blacklist = [
-    "https://v.redd.it/k7704o4lllkd1",
-    "https://v.redd.it/nn51qct4b9nd1"
-]
+const blacklist = []
 
 // Fetch the top 7 posts from the r/WarthunderMemes subreddit
 async function getTopRedditPosts(reddit) {
@@ -199,9 +195,9 @@ const commands = [
 ]
 
 async function main() {
-    console.log(args[0])
+    console.log(args[0], JSON.parse(args[1]))
     //commands[args[0]]([args[1]]);
-    getRedditVideos(args[0])
+    getRedditVideos(args[0], JSON.parse(args[1]))
     
 }
 
