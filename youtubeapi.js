@@ -68,7 +68,7 @@ async function login() {
 
     //refreshAccessToken();
 
-    //upload(0)
+    upload(0)
     //getUploadedVideos()
   
     
@@ -127,9 +127,12 @@ async function upload(id) {
         if (error.code === 401 || error.response.data.error === 'invalid_token') {
             console.log('Access token expired, refreshing token...');
             // Refresh the token and retry the upload
-            await oauth2Client.refreshAccessToken();
+            const newToken = await oauth2Client.refreshAccessToken(); // Refresh the token
+            oauth2Client.setCredentials(newToken.credentials); // Set the new token
+
+            console.log('Token refreshed, retrying upload...');
             // Retry upload after refreshing the token
-            await uploadVideo();
+            await upload(id);
         } else {
             console.error('Error uploading video:', error);
         }
