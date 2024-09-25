@@ -6,6 +6,7 @@ const fs = require('fs');
 const credentialsPath = './credentials.json'; // Path to your API credentials JSON file
 const credentials = JSON.parse(fs.readFileSync(credentialsPath));
 
+
 // Set up OAuth 2.0 client
 const oauth2Client = new google.auth.OAuth2(
   credentials.installed.client_id,
@@ -223,7 +224,7 @@ async function addDataToList(newData) {
 async function getFormattedDate() {
     const today = new Date();
 
-    
+
     // Get the year, month, and day from the date
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
